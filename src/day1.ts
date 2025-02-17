@@ -22,7 +22,7 @@ console.log(kolaemployee.name);
 
 
 
-
+//Interfaces can be used as data types
 
 interface User {
 	name:string;
@@ -40,6 +40,7 @@ class UserAccount {
 }
 
 const user: User = new UserAccount("Murphy", 1);
+
 
 //Types vs Interface
 
@@ -80,6 +81,17 @@ let chicken: Chicken = {wings:2, colourful:false, flies: false};
 console.log("Owl: ",owl.wings," ",owl.nocturnal);
 console.log("Chicken: ",chicken.wings);
 
+// owl = chicken;
+// chicken = owl;
+
+function getBird(bird: BirdInterface){
+
+}
+
+function getBird2():BirdInterface {
+	let chicken2: Chicken = {wings: 2, colourful: false, flies: false};
+	return chicken2;
+}
 
 
 
