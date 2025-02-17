@@ -9,9 +9,23 @@ const subtract = (x:number, b:number)=> (x-b);
 
 
 //-------------Generic Returns
-function identifyNumber()
+function identifyNumber(value:number):number{
+	return value;
+}
+
+function identifyString(value:string):string{
+	return value;
+}
+
+function identify<T>(value: T): T{
+	return value;
+}
 
 
+//console.log(identifyNumber(5));
+//console.log(identifyString("James"));
+console.log(identify<string>("James"));
+console.log(identify<number>(5));
 
 
 
