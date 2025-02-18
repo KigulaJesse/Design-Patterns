@@ -178,6 +178,46 @@ const employees: Employee[] = [
 // console.log(mapEmployeesToProject(employees));
 
 
+type Order = {
+    id: number;
+    customerName: string;
+}
+
+type OrderExtended = {
+    items: {
+        name: string,
+        quantity: number,
+    }[],
+    totalAmount: number
+} & Order;
+
+
+function processTotalOrdersAndQuantities(orders: OrderExtended[]): Record<string,number>[]{
+    let totalNumberofOrders: Record<string,number> = {}
+    let quantityPerProduct: Record<string,number> = {}
+
+    orders.forEach(({customerName, items})=>{
+        totalNumberofOrders[customerName] = (totalNumberofOrders[customerName] || 0) + 1
+        items.forEach(({name, quantity})=>{
+            quantityPerProduct[name] = (quantityPerProduct[name] || 0) + quantity
+        })
+    })
+
+    // console.log(totalNumberofOrders)
+    // console.log(quantityPerProduct)
+    return [totalNumberofOrders, quantityPerProduct]
+}
+
+
+const orders: OrderExtended[] = [
+    { id: 1, customerName: "Alice", items: [{ name: "Laptop", quantity: 1 }], totalAmount: 1000 },
+    { id: 2, customerName: "Bob", items: [{ name: "Phone", quantity: 2 }], totalAmount: 1200 },
+    { id: 3, customerName: "Alice", items: [{ name: "Mouse", quantity: 3 }, { name: "Laptop", quantity: 1 }], totalAmount: 200 },
+    { id: 4, customerName: "David", items: [{ name: "Keyboard", quantity: 1 }], totalAmount: 150 },
+    { id: 5, customerName: "Bob", items: [{ name: "Laptop", quantity: 1 }, { name: "Mouse", quantity: 2 }], totalAmount: 1300 },
+];
+
+console.log(processTotalOrdersAndQuantities(orders));
 
 
 
