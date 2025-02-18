@@ -1,93 +1,40 @@
-class LRUCache {
+class LRUCache <K,V>{
     private capacity: number;
-    private map: Map<number, ListNode>;
-    private head: ListNode;
-    private tail: ListNode;
+    private cache: Map<K,V>;
 
-    constructor(capacity: number) {
+    constructor(capacity: number){
         this.capacity = capacity;
-        this.map = new Map();
-        this.head = new ListNode(0, 0); // Dummy head node
-        this.tail = new ListNode(0, 0); // Dummy tail node
-        this.head.next = this.tail;
-        this.tail.prev = this.head;
+        this.cache = new Map();
     }
 
-    // Get the value from the cache.
-    get(key: number): number {
-        if (!this.map.has(key)) {
-            return -1;
+    get(key: K): V | undefined {
+        if (!this.cache.has(key)) return undefined;
+        const value = this.cache.get(key)!;
+        // We need to move this value to the front
+        this.cache.delete(key);
+        this.cache.set(key,value);
+        return value;
+    }
+
+    put(key:K, value:V): void {
+        if(this.cache.has(key)){
+            this.cache.delete(key);
+        } else if (this.cache.size >= this.capacity){
+            console.log("1: ",this.cache.keys());
+            console.log("2: ",this.cache.keys().next());
+            console.log("3: ",this.cache.keys().next().value);
+            const oldestKey = this.cache.keys().next().value!;
+            this.cache.delete(oldestKey)
         }
-        const node = this.map.get(key)!;
-        this.moveToFront(node);
-        return node.value;
-    }
 
-    // Put a key-value pair in the cache.
-    put(key: number, value: number): void {
-        if (this.map.has(key)) {
-            const node = this.map.get(key)!;
-            node.value = value;
-            this.moveToFront(node);
-        } else {
-            if (this.map.size >= this.capacity) {
-                this.removeLRU();
-            }
-
-            const newNode = new ListNode(key, value);
-            this.map.set(key, newNode);
-            this.addToFront(newNode);
-        }
-    }
-
-    // Move the given node to the front (most recent).
-    private moveToFront(node: ListNode): void {
-        this.removeNode(node);
-        this.addToFront(node);
-    }
-
-    // Remove the given node from the list.
-    private removeNode(node: ListNode): void {
-        node.prev!.next = node.next;
-        node.next!.prev = node.prev;
-    }
-
-    // Add the given node right after the head (most recent).
-    private addToFront(node: ListNode): void {
-        node.next = this.head.next;
-        node.prev = this.head;
-        this.head.next!.prev = node;
-        this.head.next = node;
-    }
-
-    // Remove the least recently used node (right before the tail).
-    private removeLRU(): void {
-        const lruNode = this.tail.prev!;
-        this.removeNode(lruNode);
-        this.map.delete(lruNode.key);
+        this.cache.set(key,value);
     }
 }
 
-class ListNode {
-    key: number;
-    value: number;
-    prev: ListNode | null = null;
-    next: ListNode | null = null;
-
-    constructor(key: number, value: number) {
-        this.key = key;
-        this.value = value;
-    }
-}
-
-// Example usage:
-const cache = new LRUCache(2);
-cache.put(1, 1);  // Cache is {1=1}
-cache.put(2, 2);  // Cache is {1=1, 2=2}
-console.log(cache.get(1));  // returns 1, Cache is {2=2, 1=1}
-cache.put(3, 3);  // Evicts key 2, Cache is {1=1, 3=3}
-console.log(cache.get(2));  // returns -1 (not found)
-cache.put(4, 4);  // Evicts key 1, Cache is {3=3, 4=4}
-console.log(cache.get(1));  // returns -1 (not found)
-console.log(cache.get(3));  // returns 3, Cache is {4=4, 3=3}
-console.log(cache.get(4));  // returns 4, Cache is {3=3, 4=4}
+const lruCache = new LRUCache<string,string>(3);
+lruCache.put("foo", "bar");
+lruCache.put("baz", "bar");
+lruCache.put("name", "Jesse");
+lruCache.put("age", "30");
+lruCache.put("time", "40");
+console.log(lruCache)
