@@ -1,8 +1,8 @@
 "use strict";
 let numbers = [1, 2, 3, 4, 5];
-for (let i = 0; i < numbers.length; i++) {
-    console.log(numbers[i] * 2);
-}
+// for (let i = 0; i < numbers.length; i++) {
+//     console.log(numbers[i] * 2);
+// }
 //numbers.forEach(num => console.log(num**2));
 // Loop through all numbers multiplying by 2
 numbers.forEach(num => console.log(num * 2));
@@ -35,7 +35,6 @@ const students = [{
         ]
     }];
 calculateAverageGrades(students);
-students.forEach(student => console.log(student.name, student.averageGrade));
 function filterAndTransformProducts(products) {
     let discounted_products = [];
     products
@@ -53,4 +52,72 @@ const products = [
     { id: 4, name: "Headphones", category: "Electronics", price: 200, inStock: true },
 ];
 let discounted_products = filterAndTransformProducts(products);
-console.log(discounted_products);
+function countEmployees(employees) {
+    let departments = {};
+    employees.forEach((employee) => {
+        console.log(employee.department);
+        console.log(departments);
+        if (employee.department in departments) {
+            departments[employee.department] += 1;
+        }
+        else {
+            departments[employee.department] = 1;
+        }
+    });
+    return departments;
+}
+function mapEmployeesToProject(employees) {
+    let projectMapping = {};
+    employees.forEach((employee) => {
+        employee.projects.forEach((project) => {
+            if (project.name in projectMapping) {
+                projectMapping[project.name].push(employee.name);
+            }
+            else {
+                projectMapping[project.name] = [employee.name];
+            }
+        });
+    });
+    return projectMapping;
+}
+const employees = [
+    {
+        name: "Alice", department: "Engineering", projects: [
+            {
+                name: "Project X",
+                deadline: new Date(2025, 6, 15)
+            },
+            {
+                name: "Project Y",
+                deadline: new Date(2025, 7, 6),
+            }
+        ]
+    },
+    {
+        name: "Bob", department: "Marketing", projects: [
+            {
+                name: "Project Y",
+                deadline: new Date(2025, 7, 20)
+            }
+        ]
+    },
+    {
+        name: "Charlie", department: "Engineering", projects: [
+            {
+                name: "Project Y",
+                deadline: new Date(2025, 7, 20)
+            }
+        ]
+    },
+    { name: "David", department: "HR", projects: [] },
+    {
+        name: "Eve", department: "Engineering", projects: [
+            {
+                name: "Project X",
+                deadline: new Date(2025, 7, 7)
+            }
+        ]
+    },
+];
+// console.log(countEmployees(employees));
+// console.log(mapEmployeesToProject(employees));
