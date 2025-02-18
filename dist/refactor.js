@@ -1,36 +1,35 @@
 "use strict";
-class LRUCacheSmells {
+class LRUCacheTest {
     constructor(capacity) {
         this.capacity = capacity;
-        this.cache = {};
-        this.order = [];
+        this.cache = new Map();
     }
     get(key) {
-        if (this.cache[key] === undefined) {
+        if (!this.cache.has(key)) {
             return -1;
         }
-        // Re-order the cache (not efficient)
-        this.order.push(key);
-        return this.cache[key];
+        const value = this.cache.get(key);
+        this.cache.delete(key);
+        this.cache.set(key, value);
+        return value;
     }
     set(key, value) {
-        if (Object.keys(this.cache).length >= this.capacity) {
-            const oldestKey = this.order.shift();
-            delete this.cache[oldestKey];
+        if (this.cache.has(key)) {
+            this.cache.delete(key);
         }
-        this.cache[key] = value;
-        this.order.push(key);
-    }
-    remove(key) {
-        if (this.cache[key] !== undefined) {
-            delete this.cache[key];
-            this.order = this.order.filter((k) => k !== key);
+        else if (this.cache.size >= this.capacity) {
+            let oldestkey = this.cache.keys().next().value;
+            this.cache.delete(oldestkey);
         }
+        this.cache.set(key, value);
     }
     printCache() {
         console.log("Current cache state:");
-        for (let key in this.cache) {
-            console.log(`${key}: ${this.cache[key]}`);
-        }
+        this.cache.forEach((value, key) => console.log(`${key}: ${value}`));
     }
 }
+const lruTest = new LRUCacheTest(2);
+lruTest.set("bar", "Ricky's");
+lruTest.set("restaurant", "Humphrey's");
+lruTest.set("school", "City Parents' School");
+lruTest.printCache();
