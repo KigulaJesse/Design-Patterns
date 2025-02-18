@@ -32,6 +32,14 @@ function getBird2() {
 const donaldduck = { name: "Donald Duck", wings: 2, nocturnal: false };
 //console.log(getBird(donaldduck));
 var names = ["Rena", "Jesse", "John"];
+let cousin = {
+    'name': "Jordie",
+    'age': 24,
+    'city': 'Kampala',
+};
+for (let key in cousin) {
+    console.log(`${key}`);
+}
 if (names.length > 0) {
     var names = ['Pat', 'Hannah', 'Andrew', 'Solomon'];
     console.log(names);
