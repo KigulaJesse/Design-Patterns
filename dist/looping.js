@@ -1,11 +1,5 @@
 "use strict";
 let numbers = [1, 2, 3, 4, 5];
-// for (let i = 0; i < numbers.length; i++) {
-//     console.log(numbers[i] * 2);
-// }
-//numbers.forEach(num => console.log(num**2));
-// Loop through all numbers multiplying by 2
-numbers.forEach(num => console.log(num * 2));
 function calculateAverageGrades(students) {
     students.forEach((student) => {
         let totalGrade = 0;
@@ -55,8 +49,8 @@ let discounted_products = filterAndTransformProducts(products);
 function countEmployees(employees) {
     let departments = {};
     employees.forEach((employee) => {
-        console.log(employee.department);
-        console.log(departments);
+        // console.log(employee.department);
+        // console.log(departments)
         if (employee.department in departments) {
             departments[employee.department] += 1;
         }
@@ -139,4 +133,27 @@ const orders = [
     { id: 4, customerName: "David", items: [{ name: "Keyboard", quantity: 1 }], totalAmount: 150 },
     { id: 5, customerName: "Bob", items: [{ name: "Laptop", quantity: 1 }, { name: "Mouse", quantity: 2 }], totalAmount: 1300 },
 ];
-console.log(processTotalOrdersAndQuantities(orders));
+function studentsPerGradeStudentsPerSubject(students) {
+    let numberOfStudentsPerGrade = {};
+    let studentsPerSubject = {};
+    students.forEach(({ name, grade, subjects }) => {
+        numberOfStudentsPerGrade[grade] = (numberOfStudentsPerGrade[grade] || 0) + 1;
+        subjects.forEach((subject) => {
+            if (subject in studentsPerSubject) {
+                studentsPerSubject[subject].push(name);
+            }
+            else {
+                studentsPerSubject[subject] = [name];
+            }
+        });
+    });
+    return [numberOfStudentsPerGrade, studentsPerSubject];
+}
+const studentsnow = [
+    { name: "Alice", grade: "Grade 10", subjects: ["Math", "Science"] },
+    { name: "Bob", grade: "Grade 11", subjects: ["English", "History"] },
+    { name: "Charlie", grade: "Grade 10", subjects: ["Math", "English"] },
+    { name: "David", grade: "Grade 12", subjects: ["Science", "History"] },
+    { name: "Eve", grade: "Grade 11", subjects: ["Math", "Science"] },
+];
+console.log(studentsPerGradeStudentsPerSubject(studentsnow));
