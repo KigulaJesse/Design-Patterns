@@ -111,3 +111,37 @@ const studentsnow = [
     { name: "Eve", grade: "Grade 11", subjects: ["Math", "Science"] },
 ];
 console.log(studentsPerGradeStudentsPerSubject(studentsnow));
+function processEmployeeData(employees) {
+}
+const employees = [
+    {
+        id: 1,
+        name: "Alice",
+        department: "Engineering",
+        salary: 90000,
+        projects: [
+            { name: "Project A", status: "completed", budget: 5000 },
+            { name: "Project B", status: "in-progress", budget: 8000 },
+        ],
+    },
+    {
+        id: 2,
+        name: "Bob",
+        department: "Marketing",
+        salary: 75000,
+        projects: [
+            { name: "Project X", status: "completed", budget: 12000 },
+            { name: "Project Y", status: "completed", budget: 3000 },
+        ],
+    },
+    {
+        id: 3,
+        name: "Charlie",
+        department: "Sales",
+        salary: 85000,
+        projects: [
+            { name: "Project Z", status: "on-hold", budget: 15000 },
+            { name: "Project W", status: "completed", budget: 2000 },
+        ],
+    },
+];

@@ -259,13 +259,61 @@ const studentsnow: StudentExtended[] = [
 console.log(studentsPerGradeStudentsPerSubject(studentsnow));
 
 
+interface ProjectCool{
+    name: string;
+    status: "completed" | "in-progress" | "on-hold";
+    budget: number;
+}
+
+interface EmployeeDeepSeek{
+    id: number;
+    name: string;
+    department: string;
+    salary: number;
+    projects: ProjectCool[];
+}
+
+
+function processEmployeeData(employees: EmployeeDeepSeek[]): EmployeeDeepSeek[] {
+   
+}
 
 
 
 
 
-
-
+const employees: EmployeeDeepSeek[] = [
+    {
+      id: 1,
+      name: "Alice",
+      department: "Engineering",
+      salary: 90000,
+      projects: [
+        { name: "Project A", status: "completed", budget: 5000 },
+        { name: "Project B", status: "in-progress", budget: 8000 },
+      ],
+    },
+    {
+      id: 2,
+      name: "Bob",
+      department: "Marketing",
+      salary: 75000,
+      projects: [
+        { name: "Project X", status: "completed", budget: 12000 },
+        { name: "Project Y", status: "completed", budget: 3000 },
+      ],
+    },
+    {
+      id: 3,
+      name: "Charlie",
+      department: "Sales",
+      salary: 85000,
+      projects: [
+        { name: "Project Z", status: "on-hold", budget: 15000 },
+        { name: "Project W", status: "completed", budget: 2000 },
+      ],
+    },
+  ];
 
 
 
