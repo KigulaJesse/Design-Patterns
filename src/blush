@@ -1,0 +1,49 @@
+nterface Item{
+    name: string;
+    price: number;
+}
+
+
+class ShoppingCart {
+    private items: Item[];
+    private totalAmount: number;
+  
+    constructor() {
+      this.items = [];
+      this.totalAmount = 0;
+    }
+  
+    addItem(item: Item): void {
+      if (!item.name || !item.price || item.price <= 0) {
+        console.log("Invalid item");
+        return;
+      }
+  
+      this.items.push(item);
+      this.totalAmount += item.price;
+      console.log(`Item added: ${item.name}`);
+    }
+  
+    removeItem(itemName: string): void {
+      const itemIndex = this.items.findIndex(item => item.name === itemName);
+      if (itemIndex === -1) {
+        console.log("Item not found");
+        return;
+      }
+  
+      this.totalAmount -= this.items[itemIndex].price;
+      this.items.splice(itemIndex, 1);
+      console.log(`Item removed: ${itemName}`);
+    }
+  
+    getTotal(): number {
+      return this.totalAmount;
+    }
+  
+    printItems(): void {
+      console.log("Items in cart:");
+      this.items.forEach(item => {
+        console.log(`${item.name} - $${item.price}`);
+      });
+    }
+}
