@@ -39,13 +39,6 @@ function filterAndTransformProducts(products) {
     });
     return discounted_products;
 }
-const products = [
-    { id: 1, name: "Laptop", category: "Electronics", price: 1000, inStock: true },
-    { id: 2, name: "Desk Chair", category: "Furniture", price: 150, inStock: false },
-    { id: 3, name: "Smartphone", category: "Electronics", price: 800, inStock: true },
-    { id: 4, name: "Headphones", category: "Electronics", price: 200, inStock: true },
-];
-let discounted_products = filterAndTransformProducts(products);
 function countEmployees(employees) {
     let departments = {};
     employees.forEach((employee) => {
@@ -74,45 +67,6 @@ function mapEmployeesToProject(employees) {
     });
     return projectMapping;
 }
-const employees = [
-    {
-        name: "Alice", department: "Engineering", projects: [
-            {
-                name: "Project X",
-                deadline: new Date(2025, 6, 15)
-            },
-            {
-                name: "Project Y",
-                deadline: new Date(2025, 7, 6),
-            }
-        ]
-    },
-    {
-        name: "Bob", department: "Marketing", projects: [
-            {
-                name: "Project Y",
-                deadline: new Date(2025, 7, 20)
-            }
-        ]
-    },
-    {
-        name: "Charlie", department: "Engineering", projects: [
-            {
-                name: "Project Y",
-                deadline: new Date(2025, 7, 20)
-            }
-        ]
-    },
-    { name: "David", department: "HR", projects: [] },
-    {
-        name: "Eve", department: "Engineering", projects: [
-            {
-                name: "Project X",
-                deadline: new Date(2025, 7, 7)
-            }
-        ]
-    },
-];
 function processTotalOrdersAndQuantities(orders) {
     let totalNumberofOrders = {};
     let quantityPerProduct = {};

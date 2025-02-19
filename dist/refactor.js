@@ -90,3 +90,119 @@ class UserManager {
         }
     }
 }
+class Product {
+    constructor(name, price, quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+}
+class Cart {
+    constructor() {
+        this.items = [];
+    }
+    addItem(product) {
+        let found = false;
+        this.items.find((item) => {
+            if (item.name === product.name) {
+                found = true;
+            }
+        });
+        if (!found) {
+            this.items.push(product);
+        }
+        console.log("Item added: " + product.name);
+    }
+    removeItem(productName) {
+        let index = this.items.findIndex((item) => item.name === productName);
+        if (index !== -1) {
+            this.items.splice(index, 1);
+            console.log("Item removed: " + productName);
+        }
+        else {
+            console.log("Item not found: " + productName);
+        }
+    }
+    getTotal() {
+        let total = this.items.reduce((total, item) => total + item.price * item.quantity, 0);
+        return total;
+    }
+}
+class Employee {
+    constructor(name, age, position, salary) {
+        this.name = name;
+        this.age = age;
+        this.position = position;
+        this.salary = salary;
+    }
+    getSalary() {
+        return this.salary;
+    }
+}
+class EmployeeManager {
+    constructor() {
+        this.employees = [];
+    }
+    addEmployee(employee) {
+        this.employees.push(employee);
+        console.log("Employee added: " + employee.name);
+    }
+    getEmployee(name) {
+        return this.employees.find((employee) => employee.name === name) || null;
+    }
+    removeEmployee(name) {
+        let index = this.employees.findIndex((employee) => employee.name === name);
+        return index !== -1 ? (this.employees.splice(index, 1), "Employee removed: " + name) : "Employee not found: " + name;
+    }
+    getTotalSalaries() {
+        return this.employees.reduce((total, employee) => total + employee.salary, 0);
+    }
+}
+class Task {
+    constructor(title, description, dueDate, priority, completed) {
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.completed = completed;
+    }
+    markCompleted() {
+        this.completed = true;
+        console.log("Task marked as completed: " + this.title);
+    }
+}
+class TaskManager {
+    constructor() {
+        this.tasks = [];
+    }
+    addTask(task) {
+        this.tasks.push(task);
+        return "Task added: " + task.title;
+    }
+    getTask(title) {
+        return this.tasks.find((task) => task.title === title) || null;
+    }
+    removeTask(title) {
+        let index = this.tasks.findIndex((task) => task.title === title);
+        if (index !== -1) {
+            this.tasks.splice(index, 1);
+            return "Task removed: " + title;
+        }
+        else {
+            return "Task not found: " + title;
+        }
+    }
+    listPendingTasks() {
+        let pendingTasks = this.tasks.map((task) => task.completed === true);
+        return pendingTasks;
+    }
+    listTasksByPriority(priority) {
+        let priorityTasks = [];
+        for (let i = 0; i < this.tasks.length; i++) {
+            if (this.tasks[i].priority === priority) {
+                priorityTasks.push(this.tasks[i]);
+            }
+        }
+        return priorityTasks;
+    }
+}
