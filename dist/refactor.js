@@ -296,20 +296,16 @@ class EmployeeManagementBoom {
         return this.employees;
     }
     getEmployeesByDepartment() {
-        let employeesByDepartment = {};
-        this.employees.forEach((employee) => {
-            if (employeesByDepartment[employee.department]) {
-                employeesByDepartment[employee.department].push(employee.name);
-            }
-            else {
-                employeesByDepartment[employee.department] = [employee.name];
-            }
+        const employeesByDepartment = {};
+        this.employees.forEach(employee => {
+            employeesByDepartment[employee.department] = employeesByDepartment[employee.department] || [];
+            employeesByDepartment[employee.department].push(employee.name);
         });
         return employeesByDepartment;
     }
     getHighestPaidEmployee() {
         let employee = this.employees.reduce((highest, employee) => {
-            return (highest.salary < employee.salary) ? highest : employee;
+            return (highest.salary > employee.salary) ? highest : employee;
         });
         return employee;
     }
@@ -329,6 +325,20 @@ class EmployeeManagementBoom {
         }
         return averageSalaries;
     }
+    getTotalSalary() {
+        return this.employees.reduce((total, employee) => total + employee.salary, 0);
+    }
+    getEmployeeByID(id) {
+        return this.employees.find((employee) => employee.id === id) || null;
+    }
+    getTop3RecentHires() {
+        let sortedEmployees = this.employees.sort((a, b) => a.joinDate.getTime() - b.joinDate.getTime());
+        return sortedEmployees;
+        // return this.employees.reduce((recent,employee)=>{
+        //     this.employees.
+        //     return (recent.joinDate > employee.joinDate) ? recent : employee;
+        // })
+    }
 }
 const employeesRefactor1 = [
     { id: 1, name: 'Alice', department: 'Engineering', salary: 90000, joinDate: new Date(2022, 3, 15) },
@@ -339,7 +349,47 @@ const employeesRefactor1 = [
 ];
 const empmgmt = new EmployeeManagementBoom();
 employeesRefactor1.forEach((employee) => empmgmt.addEmployee(employee));
-// console.log(empmgmt.getAllEmployees());
-// console.log(empmgmt.getEmployeesByDepartment());
-// console.log(empmgmt.getHighestPaidEmployee());
-console.log(empmgmt.getAverageSalaryDepartment());
+class StudentManagement {
+    constructor() {
+        this.students = [];
+    }
+    getAllStudents() {
+        return this.students;
+    }
+    addStudents(student) {
+        let found = this.students.find((check) => student.name === check.name);
+        if (found)
+            return "Student alread in class: " + student.name;
+        else {
+            this.students.push(student);
+            return "Student added in class: " + student.name;
+        }
+    }
+    getAverageAgePerDepartment() {
+        const totalsPerDepartment = {};
+        const today = new Date();
+        this.students.forEach((student) => {
+            if (!totalsPerDepartment[student.department]) {
+                totalsPerDepartment[student.department] = { 'totalAge': 0, 'studentCount': 0 };
+            }
+            totalsPerDepartment[student.department].studentCount += 1;
+            let age = today.getFullYear() - student.dateOfBirth.getFullYear();
+            totalsPerDepartment[student.department].totalAge += age;
+        });
+        const averagePerDepartment = {};
+        for (const depart in totalsPerDepartment) {
+            averagePerDepartment[depart] = totalsPerDepartment[depart].totalAge / totalsPerDepartment[depart].studentCount;
+        }
+        return averagePerDepartment;
+    }
+}
+const studentmgmt = new StudentManagement();
+const studentsboom1 = [
+    { id: 1, name: 'Alice', department: 'Engineering', dateOfBirth: new Date(1998, 3, 15) },
+    { id: 2, name: 'Bob', department: 'Marketing', dateOfBirth: new Date(1996, 5, 20) },
+    { id: 3, name: 'Charlie', department: 'Engineering', dateOfBirth: new Date(2000, 2, 10) },
+    { id: 4, name: 'David', department: 'HR', dateOfBirth: new Date(2001, 12, 5) },
+    { id: 5, name: 'Eve', department: 'Engineering', dateOfBirth: new Date(1997, 6, 25) }
+];
+studentsboom1.forEach((studentbo) => studentmgmt.addStudents(studentbo));
+console.log(studentmgmt.getAverageAgePerDepartment());
