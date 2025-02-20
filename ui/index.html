@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Autocomplete Example</title>
+        <style>
+            .autocomplete-container {
+                position: relative;
+                width: 300px;
+            }
+            .autocomplete-suggestions {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                border: 1px solid #ccc;
+                background-color: white;
+                z-index: 1;
+                max-height: 150px;
+                overflow-y: auto;
+            }
+            .autocomplete-suggestion {
+                padding: 8px;
+                cursor: pointer;
+            }
+            .autocomplete-suggestion:hover {
+                background-color: #f1f1f1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="autocomplete-container">
+            <input type="text" id="autocomplete-input" placeholder="Start typing..." />
+            <div id="autocomplete-suggestions" class="autocomplete-suggestions"></div>
+        </div>
+    <script src="../dist/ui.js"></script> <!-- After compilation -->
+    </body>
+</html>

@@ -54,3 +54,7 @@ const users = [
     { id: 2, name: 'Bob', age: 17 },
 ];
 users.push({ id: 3, name: 'Charlie', age: 30 });
+const numberssj = [10, 20, 30, 40];
+const first = numberssj.shift(); // Removes 10
+console.log(first); // 10
+console.log(numbers); //
