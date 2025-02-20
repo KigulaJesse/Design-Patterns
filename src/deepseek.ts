@@ -119,4 +119,4 @@ const numberssj = [10, 20, 30, 40];
 
 const first = numberssj.shift(); // Removes 10
 console.log(first); // 10
-console.log(numbers); //
+console.log(numberssj); //

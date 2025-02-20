@@ -1,40 +1,43 @@
-class LRUCache <K,V>{
-    private capacity: number;
+class LRUCacheCongo<K,V>{
     private cache: Map<K,V>;
+    private maxSize: number;
 
-    constructor(capacity: number){
-        this.capacity = capacity;
+    constructor(size: number) {
+        this.maxSize = size;
         this.cache = new Map();
     }
 
     get(key: K): V | undefined {
-        if (!this.cache.has(key)) return undefined;
-        const value = this.cache.get(key)!;
-        // We need to move this value to the front
-        this.cache.delete(key);
-        this.cache.set(key,value);
+        if(!this.cache.has(key)){
+            return undefined;
+        }
+        const value = this.cache.get(key);
+        if(value){
+            this.cache.delete(key);
+            this.cache.set(key,value);
+        }
         return value;
     }
 
-    put(key:K, value:V): void {
+    // Put a value into the cache
+    put(key: K, value: V): void {
         if(this.cache.has(key)){
             this.cache.delete(key);
-        } else if (this.cache.size >= this.capacity){
-            console.log("1: ",this.cache.keys());
-            console.log("2: ",this.cache.keys().next());
-            console.log("3: ",this.cache.keys().next().value);
-            const oldestKey = this.cache.keys().next().value!;
-            this.cache.delete(oldestKey)
         }
-
-        this.cache.set(key,value);
+        if (this.cache.size >= this.maxSize) {
+            let oldestKey = this.cache.keys().next().value;
+            if (oldestKey) this.cache.delete(oldestKey);
+        }
+        this.cache.set(key, value);
     }
 }
 
-const lruCache = new LRUCache<string,string>(3);
-lruCache.put("foo", "bar");
-lruCache.put("baz", "bar");
-lruCache.put("name", "Jesse");
-lruCache.put("age", "30");
-lruCache.put("time", "40");
-console.log(lruCache)
+// Example Usage:
+const cache = new LRUCacheCongo(3);
+cache.put(1, 10);
+cache.put(2, 20);
+cache.put(3, 30);
+console.log(cache.get(2)); // 20 (Moves key 2 to recent)
+cache.put(4, 40); // Removes LRU key (1)
+console.log(cache.get(1)); // undefined
+
