@@ -56,7 +56,7 @@ calculateAverageGrades(students);
 // students.forEach(student => console.log(student.name, student.averageGrade));
 
 //Second example of forEach
-interface Product {
+interface Product20 {
     id: number;
     name: string;
     category: string;
@@ -65,8 +65,8 @@ interface Product {
     discounted_price?: number;
 }
 
-function filterAndTransformProducts(products: Product[]) {
-    let discounted_products: Product[] = [];
+function filterAndTransformProduct20s(products: Product20[]) {
+    let discounted_products: Product20[] = [];
     products
         .filter((product) => product.inStock === true)
         .forEach((product) => {
@@ -77,14 +77,14 @@ function filterAndTransformProducts(products: Product[]) {
     return discounted_products;
 }
 
-// const products: Product[] = [
+// const products: Product20[] = [
 //     { id: 1, name: "Laptop", category: "Electronics", price: 1000, inStock: true },
 //     { id: 2, name: "Desk Chair", category: "Furniture", price: 150, inStock: false },
 //     { id: 3, name: "Smartphone", category: "Electronics", price: 800, inStock: true },
 //     { id: 4, name: "Headphones", category: "Electronics", price: 200, inStock: true },
 // ];
 
-// let discounted_products: Product[] = filterAndTransformProducts(products);
+// let discounted_products: Product20[] = filterAndTransformProduct20s(products);
 // console.log(discounted_products);
 
 interface Employee {
@@ -178,38 +178,38 @@ function mapEmployeesToProject(employees: Employee[]): Record<string, string[]> 
 // console.log(mapEmployeesToProject(employees));
 
 
-type Order = {
+type Order20 = {
     id: number;
     customerName: string;
 }
 
-type OrderExtended = {
+type Order20Extended = {
     items: {
         name: string,
         quantity: number,
     }[],
     totalAmount: number
-} & Order;
+} & Order20;
 
 
-function processTotalOrdersAndQuantities(orders: OrderExtended[]): Record<string,number>[]{
-    let totalNumberofOrders: Record<string,number> = {}
-    let quantityPerProduct: Record<string,number> = {}
+function processTotalOrder20sAndQuantities(orders: Order20Extended[]): Record<string, number>[] {
+    let totalNumberofOrder20s: Record<string, number> = {}
+    let quantityPerProduct20: Record<string, number> = {}
 
-    orders.forEach(({customerName, items})=>{
-        totalNumberofOrders[customerName] = (totalNumberofOrders[customerName] || 0) + 1
-        items.forEach(({name, quantity})=>{
-            quantityPerProduct[name] = (quantityPerProduct[name] || 0) + quantity
+    orders.forEach(({ customerName, items }) => {
+        totalNumberofOrder20s[customerName] = (totalNumberofOrder20s[customerName] || 0) + 1
+        items.forEach(({ name, quantity }) => {
+            quantityPerProduct20[name] = (quantityPerProduct20[name] || 0) + quantity
         })
     })
 
-    // console.log(totalNumberofOrders)
-    // console.log(quantityPerProduct)
-    return [totalNumberofOrders, quantityPerProduct]
+    // console.log(totalNumberofOrder20s)
+    // console.log(quantityPerProduct20)
+    return [totalNumberofOrder20s, quantityPerProduct20]
 }
 
 
-const orders: OrderExtended[] = [
+const orders: Order20Extended[] = [
     { id: 1, customerName: "Alice", items: [{ name: "Laptop", quantity: 1 }], totalAmount: 1000 },
     { id: 2, customerName: "Bob", items: [{ name: "Phone", quantity: 2 }], totalAmount: 1200 },
     { id: 3, customerName: "Alice", items: [{ name: "Mouse", quantity: 3 }, { name: "Laptop", quantity: 1 }], totalAmount: 200 },
@@ -217,7 +217,7 @@ const orders: OrderExtended[] = [
     { id: 5, customerName: "Bob", items: [{ name: "Laptop", quantity: 1 }, { name: "Mouse", quantity: 2 }], totalAmount: 1300 },
 ];
 
-// console.log(processTotalOrdersAndQuantities(orders));
+// console.log(processTotalOrder20sAndQuantities(orders));
 
 
 
@@ -228,23 +228,23 @@ type NewStudent = {
 
 type StudentExtended = NewStudent & {
     subjects: string[]
-} 
+}
 
-function studentsPerGradeStudentsPerSubject(students: StudentExtended[]): [Record<string,number>, Record<string,string[]>]{
-    let numberOfStudentsPerGrade: Record<string,number> = {};
-    let studentsPerSubject: Record<string,string[]> = {}
-    students.forEach(({name,grade,subjects})=>{
+function studentsPerGradeStudentsPerSubject(students: StudentExtended[]): [Record<string, number>, Record<string, string[]>] {
+    let numberOfStudentsPerGrade: Record<string, number> = {};
+    let studentsPerSubject: Record<string, string[]> = {}
+    students.forEach(({ name, grade, subjects }) => {
         numberOfStudentsPerGrade[grade] = (numberOfStudentsPerGrade[grade] || 0) + 1
-        subjects.forEach((subject)=>{
-            if (subject in studentsPerSubject){
+        subjects.forEach((subject) => {
+            if (subject in studentsPerSubject) {
                 studentsPerSubject[subject].push(name);
             }
-            else{
+            else {
                 studentsPerSubject[subject] = [name];
             }
         });
     })
-    return [numberOfStudentsPerGrade,studentsPerSubject];
+    return [numberOfStudentsPerGrade, studentsPerSubject];
 }
 
 const studentsnow: StudentExtended[] = [
@@ -253,19 +253,19 @@ const studentsnow: StudentExtended[] = [
     { name: "Charlie", grade: "Grade 10", subjects: ["Math", "English"] },
     { name: "David", grade: "Grade 12", subjects: ["Science", "History"] },
     { name: "Eve", grade: "Grade 11", subjects: ["Math", "Science"] },
-  ];
-  
+];
+
 
 console.log(studentsPerGradeStudentsPerSubject(studentsnow));
 
 
-interface ProjectCool{
+interface ProjectCool {
     name: string;
     status: "completed" | "in-progress" | "on-hold";
     budget: number;
 }
 
-interface EmployeeDeepSeek{
+interface EmployeeDeepSeek {
     id: number;
     name: string;
     department: string;
@@ -275,7 +275,8 @@ interface EmployeeDeepSeek{
 
 
 function processEmployeeData(employees: EmployeeDeepSeek[]): EmployeeDeepSeek[] {
-   
+    let list: EmployeeDeepSeek[] = [];
+    return list;
 }
 
 
@@ -284,36 +285,36 @@ function processEmployeeData(employees: EmployeeDeepSeek[]): EmployeeDeepSeek[] 
 
 const employees: EmployeeDeepSeek[] = [
     {
-      id: 1,
-      name: "Alice",
-      department: "Engineering",
-      salary: 90000,
-      projects: [
-        { name: "Project A", status: "completed", budget: 5000 },
-        { name: "Project B", status: "in-progress", budget: 8000 },
-      ],
+        id: 1,
+        name: "Alice",
+        department: "Engineering",
+        salary: 90000,
+        projects: [
+            { name: "Project A", status: "completed", budget: 5000 },
+            { name: "Project B", status: "in-progress", budget: 8000 },
+        ],
     },
     {
-      id: 2,
-      name: "Bob",
-      department: "Marketing",
-      salary: 75000,
-      projects: [
-        { name: "Project X", status: "completed", budget: 12000 },
-        { name: "Project Y", status: "completed", budget: 3000 },
-      ],
+        id: 2,
+        name: "Bob",
+        department: "Marketing",
+        salary: 75000,
+        projects: [
+            { name: "Project X", status: "completed", budget: 12000 },
+            { name: "Project Y", status: "completed", budget: 3000 },
+        ],
     },
     {
-      id: 3,
-      name: "Charlie",
-      department: "Sales",
-      salary: 85000,
-      projects: [
-        { name: "Project Z", status: "on-hold", budget: 15000 },
-        { name: "Project W", status: "completed", budget: 2000 },
-      ],
+        id: 3,
+        name: "Charlie",
+        department: "Sales",
+        salary: 85000,
+        projects: [
+            { name: "Project Z", status: "on-hold", budget: 15000 },
+            { name: "Project W", status: "completed", budget: 2000 },
+        ],
     },
-  ];
+];
 
 
 

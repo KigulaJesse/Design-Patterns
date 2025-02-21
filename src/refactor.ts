@@ -44,13 +44,13 @@ const lruTest = new LRUCacheNew(2);
 // lruTest.print();
 
 
-interface Item {
+interface Item20 {
     name: string;
     price: number;
 }
 
 class ShoppingCart {
-    private items: Item[];
+    private items: Item20[];
     private totalAmount: number;
 
     constructor() {
@@ -58,7 +58,7 @@ class ShoppingCart {
         this.totalAmount = 0;
     }
 
-    addItem(item: Item): void {
+    addItem20(item: Item20): void {
         if (!item.name || !item.price || item.price <= 0) {
             console.log("Invalid item");
             return;
@@ -66,28 +66,28 @@ class ShoppingCart {
 
         this.items.push(item);
         this.totalAmount += item.price;
-        console.log(`Item added: ${item.name}`);
+        console.log(`Item20 added: ${item.name}`);
     }
 
-    removeItem(itemName: string): void {
+    removeItem20(itemName: string): void {
         const itemIndex = this.items.findIndex(item => item.name === itemName);
         if (itemIndex === -1) {
-            console.log("Item not found");
+            console.log("Item20 not found");
             return;
         }
 
         this.totalAmount -= this.items[itemIndex].price;
         this.items.splice(itemIndex, 1);
-        console.log(`Item removed: ${itemName}`);
+        console.log(`Item20 removed: ${itemName}`);
     }
 
     getTotal(): number {
         return this.totalAmount;
     }
 
-    printItems(): void {
+    printItem20s(): void {
         // console.log("");
-        // console.log("Items in cart:");
+        // console.log("Item20s in cart:");
         this.items.forEach(item => {
             console.log(`${item.name} - $${item.price}`);
         });
@@ -95,16 +95,16 @@ class ShoppingCart {
 }
 
 const clientX = new ShoppingCart();
-// clientX.addItem({name:"cup", price:10000})
-// clientX.addItem({name:"tea", price:5000})
-// clientX.addItem({name:"earphones", price:3000})
-// clientX.addItem({name:"cup", price:10000})
-// clientX.printItems()
-// clientX.removeItem("cup")
-// clientX.printItems()
+// clientX.addItem20({name:"cup", price:10000})
+// clientX.addItem20({name:"tea", price:5000})
+// clientX.addItem20({name:"earphones", price:3000})
+// clientX.addItem20({name:"cup", price:10000})
+// clientX.printItem20s()
+// clientX.removeItem20("cup")
+// clientX.printItem20s()
 
 
-interface User {
+interface User20 {
     id?: string
     name: string,
     email: string,
@@ -112,32 +112,32 @@ interface User {
     address: string,
 }
 
-class UserManager {
-    users: User[];
+class User20Manager {
+    users: User20[];
 
     constructor() {
         this.users = [];
     }
 
-    addUser(user: User) {
+    addUser20(user: User20) {
         user.id = Math.random().toString(36).substr(2, 9)
         this.users.push(user);
-        console.log("User added: " + user.name);
+        console.log("User20 added: " + user.name);
         return user;
     }
 
-    findUser(email: string): User | null {
+    findUser20(email: string): User20 | null {
         return this.users.find((user) => user.email === email) || null;
     }
 
-    deleteUser(email: string) {
+    deleteUser20(email: string) {
         let index = -1;
         index = this.users.findIndex((user) => user.email === email);
         if (index !== -1) {
             this.users.splice(index, 1);
-            console.log("User deleted: " + email);
+            console.log("User20 deleted: " + email);
         } else {
-            console.log("User not found: " + email);
+            console.log("User20 not found: " + email);
         }
     }
 }
@@ -145,7 +145,7 @@ class UserManager {
 
 
 
-class Product {
+class Product20 {
     name: string;
     price: number;
     quantity: number;
@@ -158,13 +158,13 @@ class Product {
 }
 
 class Cart {
-    items: Product[];
+    items: Product20[];
 
     constructor() {
         this.items = [];
     }
 
-    addItem(product: Product) {
+    addItem20(product: Product20) {
         let found = false;
         this.items.find((item) => {
             if (item.name === product.name) {
@@ -174,16 +174,16 @@ class Cart {
         if (!found) {
             this.items.push(product);
         }
-        console.log("Item added: " + product.name);
+        console.log("Item20 added: " + product.name);
     }
 
-    removeItem(productName: string) {
+    removeItem20(productName: string) {
         let index = this.items.findIndex((item) => item.name === productName);
         if (index !== -1) {
             this.items.splice(index, 1);
-            console.log("Item removed: " + productName);
+            console.log("Item20 removed: " + productName);
         } else {
-            console.log("Item not found: " + productName);
+            console.log("Item20 not found: " + productName);
         }
     }
 
@@ -239,9 +239,9 @@ class EmployeeManager {
 
 class Task {
     constructor(
-        public title: string, 
-        public description: string, 
-        public dueDate: string, 
+        public title: string,
+        public description: string,
+        public dueDate: string,
         public priority: string,
         public completed: boolean
     ) { }
@@ -265,11 +265,11 @@ class TaskManager {
     }
 
     getTask(title: string): Task | null {
-        return this.tasks.find((task)=> task.title === title) || null;
+        return this.tasks.find((task) => task.title === title) || null;
     }
 
     removeTask(title: string): string {
-        let index = this.tasks.findIndex((task)=> task.title === title);
+        let index = this.tasks.findIndex((task) => task.title === title);
         if (index !== -1) {
             this.tasks.splice(index, 1);
             return "Task removed: " + title;
@@ -279,7 +279,7 @@ class TaskManager {
     }
 
     listPendingTasks() {
-        let pendingTasks = this.tasks.map((task)=>task.completed === true);
+        let pendingTasks = this.tasks.map((task) => task.completed === true);
         return pendingTasks;
     }
 
@@ -297,51 +297,51 @@ class TaskManager {
 
 
 
-class UserBoom {
+class User20Boom {
     constructor(
-        public id: number, 
-        public name: string, 
-        public email: string, 
-        public password: string, 
+        public id: number,
+        public name: string,
+        public email: string,
+        public password: string,
         public isAdmin: boolean
     ) { }
 
-    getUserDetails(): string {
-        return `User: ${this.name}, Email: ${this.email}, Admin: ${this.isAdmin ? "Yes" : "No"}`;
+    getUser20Details(): string {
+        return `User20: ${this.name}, Email: ${this.email}, Admin: ${this.isAdmin ? "Yes" : "No"}`;
     }
 }
 
-class UserService {
-    private users: UserBoom[] = [];
+class User20Service {
+    private users: User20Boom[] = [];
 
-    addUser(user: UserBoom) {
+    addUser20(user: User20Boom) {
         this.users.push(user);
     }
 
-    findUserByEmail(email: string): UserBoom | null {
-        return this.users.find((user)=> user.email === email) || null;
+    findUser20ByEmail(email: string): User20Boom | null {
+        return this.users.find((user) => user.email === email) || null;
     }
 
-    deleteUser(email: string): void{
-        let index = this.users.findIndex((user)=> user.email === email)
+    deleteUser20(email: string): void {
+        let index = this.users.findIndex((user) => user.email === email)
         if (index > -1) {
             this.users.splice(index, 1);
         }
     }
 
-    getUserDetails(): string[] {
-        return this.users.map((user) => user.getUserDetails());
+    getUser20Details(): string[] {
+        return this.users.map((user) => user.getUser20Details());
     }
 }
 
-const userService = new UserService();
-userService.addUser(new UserBoom(1, "John Doe", "john@example.com", "password123", false));
-userService.addUser(new UserBoom(2, "Jane Smith", "jane@example.com", "securepass", true));
+const userService = new User20Service();
+userService.addUser20(new User20Boom(1, "John Doe", "john@example.com", "password123", false));
+userService.addUser20(new User20Boom(2, "Jane Smith", "jane@example.com", "securepass", true));
 
-// console.log(userService.getUserDetails());
-// console.log(userService.findUserByEmail("john@example.com"));
-// userService.deleteUser("john@example.com");
-// console.log(userService.getUserDetails());
+// console.log(userService.getUser20Details());
+// console.log(userService.findUser20ByEmail("john@example.com"));
+// userService.deleteUser20("john@example.com");
+// console.log(userService.getUser20Details());
 
 
 
@@ -350,7 +350,7 @@ class LRUCacheRefactor1 {
     private capacity: number;
     private cache: Map<number, string>;
 
-    constructor(capacity: number) { 
+    constructor(capacity: number) {
         this.capacity = capacity;
         this.cache = new Map();
     }
@@ -361,18 +361,18 @@ class LRUCacheRefactor1 {
         }
         let value = this.cache.get(key);
         this.cache.delete(key);
-        if (value){
-            this.cache.set(key,value);
+        if (value) {
+            this.cache.set(key, value);
         }
         return value || null;
     }
 
     put(key: number, value: string): void {
-        if (this.cache.has(key)) { 
+        if (this.cache.has(key)) {
             this.cache.delete(key);
         } else if (this.cache.size >= this.capacity) {
             let oldestKey = this.cache.keys().next().value;
-            if (oldestKey){
+            if (oldestKey) {
                 this.cache.delete(oldestKey);
             }
         }
@@ -404,15 +404,15 @@ interface EmployeeRefactor1 {
     joinDate: Date; // "YYYY-MM-DD"
 }
 
-class EmployeeManagementBoom{
+class EmployeeManagementBoom {
     private employees: EmployeeRefactor1[];
 
-    constructor(){
+    constructor() {
         this.employees = [];
     }
 
-    addEmployee(employee:EmployeeRefactor1){
-        const employeeExists = this.employees.some((employeeboom)=> employeeboom.id === employee.id)
+    addEmployee(employee: EmployeeRefactor1) {
+        const employeeExists = this.employees.some((employeeboom) => employeeboom.id === employee.id)
         if (employeeExists) {
             return "Employee Exists"
         }
@@ -420,11 +420,11 @@ class EmployeeManagementBoom{
         return "Employee Added";
     }
 
-    getAllEmployees(): EmployeeRefactor1[]{
+    getAllEmployees(): EmployeeRefactor1[] {
         return this.employees;
     }
 
-    getEmployeesByDepartment(): Record<string,string[]>{
+    getEmployeesByDepartment(): Record<string, string[]> {
         const employeesByDepartment: Record<string, string[]> = {};
         this.employees.forEach(employee => {
             employeesByDepartment[employee.department] = employeesByDepartment[employee.department] || [];
@@ -433,21 +433,21 @@ class EmployeeManagementBoom{
         return employeesByDepartment;
     }
 
-    getHighestPaidEmployee():EmployeeRefactor1{
-        let employee = this.employees.reduce((highest,employee)=>{
-            return (highest.salary > employee.salary)? highest : employee
+    getHighestPaidEmployee(): EmployeeRefactor1 {
+        let employee = this.employees.reduce((highest, employee) => {
+            return (highest.salary > employee.salary) ? highest : employee
         });
         return employee;
     }
 
     getAverageSalaryDepartment() {
-        let totalsPerDepartment: Record<string, {totalSalary:number, employeeCount:number}> = {}
-        this.employees.map((employee)=>{
+        let totalsPerDepartment: Record<string, { totalSalary: number, employeeCount: number }> = {}
+        this.employees.map((employee) => {
             if (!totalsPerDepartment[employee.department]) {
                 totalsPerDepartment[employee.department] = { totalSalary: 0, employeeCount: 0 };
             }
             totalsPerDepartment[employee.department]['totalSalary'] = totalsPerDepartment[employee.department]['totalSalary'] + employee.salary;
-            totalsPerDepartment[employee.department]['employeeCount'] += 1;            
+            totalsPerDepartment[employee.department]['employeeCount'] += 1;
         })
         const averageSalaries: Record<string, number> = {};
         for (const department in totalsPerDepartment) {
@@ -458,19 +458,19 @@ class EmployeeManagementBoom{
     }
 
     getTotalSalary(): number {
-        return this.employees.reduce((total, employee)=> total + employee.salary,0);
+        return this.employees.reduce((total, employee) => total + employee.salary, 0);
     }
 
-    getEmployeeByID(id: number): EmployeeRefactor1 | null{
-        return this.employees.find((employee)=> employee.id === id) || null
+    getEmployeeByID(id: number): EmployeeRefactor1 | null {
+        return this.employees.find((employee) => employee.id === id) || null
     }
 
-    getTop3RecentHires():EmployeeRefactor1[] {
-        let sortedEmployees = this.employees.sort((a:EmployeeRefactor1 ,b: EmployeeRefactor1) => a.joinDate.getTime() - b.joinDate.getTime());
+    getTop3RecentHires(): EmployeeRefactor1[] {
+        let sortedEmployees = this.employees.sort((a: EmployeeRefactor1, b: EmployeeRefactor1) => a.joinDate.getTime() - b.joinDate.getTime());
 
         return sortedEmployees;
         // return this.employees.reduce((recent,employee)=>{
-            
+
         //     this.employees.
 
         //     return (recent.joinDate > employee.joinDate) ? recent : employee;
@@ -480,15 +480,15 @@ class EmployeeManagementBoom{
 
 
 const employeesRefactor1: EmployeeRefactor1[] = [
-    { id: 1, name: 'Alice', department: 'Engineering', salary: 90000, joinDate: new Date(2022,3,15) },
-    { id: 2, name: 'Bob', department: 'Marketing', salary: 80000, joinDate: new Date(2021,5,20) },
-    { id: 3, name: 'Charlie', department: 'Engineering', salary: 100000, joinDate: new Date(2023,2,10) },
-    { id: 4, name: 'David', department: 'HR', salary: 75000, joinDate: new Date(2020,12,5) },
-    { id: 5, name: 'Eve', department: 'Engineering', salary: 110000, joinDate: new Date(2021,6,25)}
+    { id: 1, name: 'Alice', department: 'Engineering', salary: 90000, joinDate: new Date(2022, 3, 15) },
+    { id: 2, name: 'Bob', department: 'Marketing', salary: 80000, joinDate: new Date(2021, 5, 20) },
+    { id: 3, name: 'Charlie', department: 'Engineering', salary: 100000, joinDate: new Date(2023, 2, 10) },
+    { id: 4, name: 'David', department: 'HR', salary: 75000, joinDate: new Date(2020, 12, 5) },
+    { id: 5, name: 'Eve', department: 'Engineering', salary: 110000, joinDate: new Date(2021, 6, 25) }
 ];
 
 const empmgmt = new EmployeeManagementBoom()
-employeesRefactor1.forEach((employee)=>empmgmt.addEmployee(employee))
+employeesRefactor1.forEach((employee) => empmgmt.addEmployee(employee))
 
 // console.log(empmgmt.getAllEmployees());
 
@@ -515,38 +515,38 @@ interface StudentsRefactory1 {
 class StudentManagement {
     private students: StudentsRefactory1[];
 
-    constructor(){
+    constructor() {
         this.students = [];
     }
 
-    getAllStudents():StudentsRefactory1[]{
+    getAllStudents(): StudentsRefactory1[] {
         return this.students
     }
 
-    addStudents(student: StudentsRefactory1) :string {
-        let found = this.students.find((check)=> student.name === check.name)
+    addStudents(student: StudentsRefactory1): string {
+        let found = this.students.find((check) => student.name === check.name)
 
         if (found) return "Student alread in class: " + student.name
-        else{
+        else {
             this.students.push(student);
             return "Student added in class: " + student.name
-        }  
+        }
     }
 
-    getAverageAgePerDepartment(){
-        const totalsPerDepartment: Record<string, {totalAge:number, studentCount: number}> = {}
+    getAverageAgePerDepartment() {
+        const totalsPerDepartment: Record<string, { totalAge: number, studentCount: number }> = {}
         const today = new Date();
-        this.students.forEach((student)=>{
-            if(!totalsPerDepartment[student.department]){
-                totalsPerDepartment[student.department] = {'totalAge':0, 'studentCount': 0}
+        this.students.forEach((student) => {
+            if (!totalsPerDepartment[student.department]) {
+                totalsPerDepartment[student.department] = { 'totalAge': 0, 'studentCount': 0 }
             }
             totalsPerDepartment[student.department].studentCount += 1
             let age = today.getFullYear() - student.dateOfBirth.getFullYear()
             totalsPerDepartment[student.department].totalAge += age
         });
 
-        const averagePerDepartment: Record<string,number> = {}
-        for (const depart in totalsPerDepartment){
+        const averagePerDepartment: Record<string, number> = {}
+        for (const depart in totalsPerDepartment) {
             averagePerDepartment[depart] = totalsPerDepartment[depart].totalAge / totalsPerDepartment[depart].studentCount;
         }
         return averagePerDepartment;
@@ -554,14 +554,14 @@ class StudentManagement {
 }
 
 const studentmgmt = new StudentManagement();
-const studentsboom1: StudentsRefactory1[] =[
-    { id: 1, name: 'Alice', department: 'Engineering', dateOfBirth: new Date(1998,3,15) },
-    { id: 2, name: 'Bob', department: 'Marketing', dateOfBirth: new Date(1996,5,20) },
-    { id: 3, name: 'Charlie', department: 'Engineering', dateOfBirth: new Date(2000,2,10) },
-    { id: 4, name: 'David', department: 'HR', dateOfBirth: new Date(2001,12,5) },
-    { id: 5, name: 'Eve', department: 'Engineering', dateOfBirth: new Date(1997,6,25)}
+const studentsboom1: StudentsRefactory1[] = [
+    { id: 1, name: 'Alice', department: 'Engineering', dateOfBirth: new Date(1998, 3, 15) },
+    { id: 2, name: 'Bob', department: 'Marketing', dateOfBirth: new Date(1996, 5, 20) },
+    { id: 3, name: 'Charlie', department: 'Engineering', dateOfBirth: new Date(2000, 2, 10) },
+    { id: 4, name: 'David', department: 'HR', dateOfBirth: new Date(2001, 12, 5) },
+    { id: 5, name: 'Eve', department: 'Engineering', dateOfBirth: new Date(1997, 6, 25) }
 ]
 
-studentsboom1.forEach((studentbo)=> studentmgmt.addStudents(studentbo));
+studentsboom1.forEach((studentbo) => studentmgmt.addStudents(studentbo));
 
 console.log(studentmgmt.getAverageAgePerDepartment());

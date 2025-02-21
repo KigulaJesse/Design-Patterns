@@ -1,11 +1,11 @@
-nterface Item{
+nterface Item20{
     name: string;
     price: number;
 }
 
 
 class ShoppingCart {
-    private items: Item[];
+    private items: Item20[];
     private totalAmount: number;
   
     constructor() {
@@ -13,7 +13,7 @@ class ShoppingCart {
       this.totalAmount = 0;
     }
   
-    addItem(item: Item): void {
+    addItem20(item: Item20): void {
       if (!item.name || !item.price || item.price <= 0) {
         console.log("Invalid item");
         return;
@@ -21,27 +21,27 @@ class ShoppingCart {
   
       this.items.push(item);
       this.totalAmount += item.price;
-      console.log(`Item added: ${item.name}`);
+      console.log(`Item20 added: ${item.name}`);
     }
   
-    removeItem(itemName: string): void {
+    removeItem20(itemName: string): void {
       const itemIndex = this.items.findIndex(item => item.name === itemName);
       if (itemIndex === -1) {
-        console.log("Item not found");
+        console.log("Item20 not found");
         return;
       }
   
       this.totalAmount -= this.items[itemIndex].price;
       this.items.splice(itemIndex, 1);
-      console.log(`Item removed: ${itemName}`);
+      console.log(`Item20 removed: ${itemName}`);
     }
   
     getTotal(): number {
       return this.totalAmount;
     }
   
-    printItems(): void {
-      console.log("Items in cart:");
+    printItem20s(): void {
+      console.log("Item20s in cart:");
       this.items.forEach(item => {
         console.log(`${item.name} - $${item.price}`);
       });

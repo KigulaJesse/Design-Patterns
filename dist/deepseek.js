@@ -1,6 +1,6 @@
 "use strict";
-function printSampleUser(data) {
-    console.log(`User: ${data.name}, Age: ${data.age}`);
+function printSampleUser2020(data) {
+    console.log(`User2020: ${data.name}, Age: ${data.age}`);
 }
 function processAdulthood(data) {
     console.log("Adult");
@@ -29,10 +29,10 @@ const result = someUnknownFunction();
 const unusedData = { key: 'value' };
 ;
 //Eigth Code Segment
-// function processItem(item: string): void;
-// function processItem(item: number): void;
-// function processItem(item: boolean): void;
-function processItem(item) {
+// function processItem20(item: string): void;
+// function processItem20(item: number): void;
+// function processItem20(item: boolean): void;
+function processItem20(item) {
     console.log(`Processing item: ${item}`);
 }
 //Ninth Code Segment
@@ -49,11 +49,11 @@ function calculateTotal(price, discount) {
         return price - discount;
 }
 //Thirteenth Code Segment
-const users = [
+const User2020s = [
     { id: 1, name: 'Alice', age: 25 },
     { id: 2, name: 'Bob', age: 17 },
 ];
-users.push({ id: 3, name: 'Charlie', age: 30 });
+User2020s.push({ id: 3, name: 'Charlie', age: 30 });
 const numberssj = [10, 20, 30, 40];
 const first = numberssj.shift(); // Removes 10
 console.log(first); // 10

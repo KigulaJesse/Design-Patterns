@@ -34,63 +34,63 @@ class ShoppingCart {
         this.items = [];
         this.totalAmount = 0;
     }
-    addItem(item) {
+    addItem20(item) {
         if (!item.name || !item.price || item.price <= 0) {
             console.log("Invalid item");
             return;
         }
         this.items.push(item);
         this.totalAmount += item.price;
-        console.log(`Item added: ${item.name}`);
+        console.log(`Item20 added: ${item.name}`);
     }
-    removeItem(itemName) {
+    removeItem20(itemName) {
         const itemIndex = this.items.findIndex(item => item.name === itemName);
         if (itemIndex === -1) {
-            console.log("Item not found");
+            console.log("Item20 not found");
             return;
         }
         this.totalAmount -= this.items[itemIndex].price;
         this.items.splice(itemIndex, 1);
-        console.log(`Item removed: ${itemName}`);
+        console.log(`Item20 removed: ${itemName}`);
     }
     getTotal() {
         return this.totalAmount;
     }
-    printItems() {
+    printItem20s() {
         // console.log("");
-        // console.log("Items in cart:");
+        // console.log("Item20s in cart:");
         this.items.forEach(item => {
             console.log(`${item.name} - $${item.price}`);
         });
     }
 }
 const clientX = new ShoppingCart();
-class UserManager {
+class User20Manager {
     constructor() {
         this.users = [];
     }
-    addUser(user) {
+    addUser20(user) {
         user.id = Math.random().toString(36).substr(2, 9);
         this.users.push(user);
-        console.log("User added: " + user.name);
+        console.log("User20 added: " + user.name);
         return user;
     }
-    findUser(email) {
+    findUser20(email) {
         return this.users.find((user) => user.email === email) || null;
     }
-    deleteUser(email) {
+    deleteUser20(email) {
         let index = -1;
         index = this.users.findIndex((user) => user.email === email);
         if (index !== -1) {
             this.users.splice(index, 1);
-            console.log("User deleted: " + email);
+            console.log("User20 deleted: " + email);
         }
         else {
-            console.log("User not found: " + email);
+            console.log("User20 not found: " + email);
         }
     }
 }
-class Product {
+class Product20 {
     constructor(name, price, quantity) {
         this.name = name;
         this.price = price;
@@ -101,7 +101,7 @@ class Cart {
     constructor() {
         this.items = [];
     }
-    addItem(product) {
+    addItem20(product) {
         let found = false;
         this.items.find((item) => {
             if (item.name === product.name) {
@@ -111,16 +111,16 @@ class Cart {
         if (!found) {
             this.items.push(product);
         }
-        console.log("Item added: " + product.name);
+        console.log("Item20 added: " + product.name);
     }
-    removeItem(productName) {
+    removeItem20(productName) {
         let index = this.items.findIndex((item) => item.name === productName);
         if (index !== -1) {
             this.items.splice(index, 1);
-            console.log("Item removed: " + productName);
+            console.log("Item20 removed: " + productName);
         }
         else {
-            console.log("Item not found: " + productName);
+            console.log("Item20 not found: " + productName);
         }
     }
     getTotal() {
@@ -206,7 +206,7 @@ class TaskManager {
         return priorityTasks;
     }
 }
-class UserBoom {
+class User20Boom {
     constructor(id, name, email, password, isAdmin) {
         this.id = id;
         this.name = name;
@@ -214,37 +214,37 @@ class UserBoom {
         this.password = password;
         this.isAdmin = isAdmin;
     }
-    getUserDetails() {
-        return `User: ${this.name}, Email: ${this.email}, Admin: ${this.isAdmin ? "Yes" : "No"}`;
+    getUser20Details() {
+        return `User20: ${this.name}, Email: ${this.email}, Admin: ${this.isAdmin ? "Yes" : "No"}`;
     }
 }
-class UserService {
+class User20Service {
     constructor() {
         this.users = [];
     }
-    addUser(user) {
+    addUser20(user) {
         this.users.push(user);
     }
-    findUserByEmail(email) {
+    findUser20ByEmail(email) {
         return this.users.find((user) => user.email === email) || null;
     }
-    deleteUser(email) {
+    deleteUser20(email) {
         let index = this.users.findIndex((user) => user.email === email);
         if (index > -1) {
             this.users.splice(index, 1);
         }
     }
-    getUserDetails() {
-        return this.users.map((user) => user.getUserDetails());
+    getUser20Details() {
+        return this.users.map((user) => user.getUser20Details());
     }
 }
-const userService = new UserService();
-userService.addUser(new UserBoom(1, "John Doe", "john@example.com", "password123", false));
-userService.addUser(new UserBoom(2, "Jane Smith", "jane@example.com", "securepass", true));
-// console.log(userService.getUserDetails());
-// console.log(userService.findUserByEmail("john@example.com"));
-// userService.deleteUser("john@example.com");
-// console.log(userService.getUserDetails());
+const userService = new User20Service();
+userService.addUser20(new User20Boom(1, "John Doe", "john@example.com", "password123", false));
+userService.addUser20(new User20Boom(2, "Jane Smith", "jane@example.com", "securepass", true));
+// console.log(userService.getUser20Details());
+// console.log(userService.findUser20ByEmail("john@example.com"));
+// userService.deleteUser20("john@example.com");
+// console.log(userService.getUser20Details());
 class LRUCacheRefactor1 {
     constructor(capacity) {
         this.capacity = capacity;

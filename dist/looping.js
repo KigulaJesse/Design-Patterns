@@ -29,7 +29,7 @@ const students = [{
         ]
     }];
 calculateAverageGrades(students);
-function filterAndTransformProducts(products) {
+function filterAndTransformProduct20s(products) {
     let discounted_products = [];
     products
         .filter((product) => product.inStock === true)
@@ -67,18 +67,18 @@ function mapEmployeesToProject(employees) {
     });
     return projectMapping;
 }
-function processTotalOrdersAndQuantities(orders) {
-    let totalNumberofOrders = {};
-    let quantityPerProduct = {};
+function processTotalOrder20sAndQuantities(orders) {
+    let totalNumberofOrder20s = {};
+    let quantityPerProduct20 = {};
     orders.forEach(({ customerName, items }) => {
-        totalNumberofOrders[customerName] = (totalNumberofOrders[customerName] || 0) + 1;
+        totalNumberofOrder20s[customerName] = (totalNumberofOrder20s[customerName] || 0) + 1;
         items.forEach(({ name, quantity }) => {
-            quantityPerProduct[name] = (quantityPerProduct[name] || 0) + quantity;
+            quantityPerProduct20[name] = (quantityPerProduct20[name] || 0) + quantity;
         });
     });
-    // console.log(totalNumberofOrders)
-    // console.log(quantityPerProduct)
-    return [totalNumberofOrders, quantityPerProduct];
+    // console.log(totalNumberofOrder20s)
+    // console.log(quantityPerProduct20)
+    return [totalNumberofOrder20s, quantityPerProduct20];
 }
 const orders = [
     { id: 1, customerName: "Alice", items: [{ name: "Laptop", quantity: 1 }], totalAmount: 1000 },
@@ -112,6 +112,8 @@ const studentsnow = [
 ];
 console.log(studentsPerGradeStudentsPerSubject(studentsnow));
 function processEmployeeData(employees) {
+    let list = [];
+    return list;
 }
 const employees = [
     {

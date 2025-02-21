@@ -20,14 +20,14 @@ class Autocomplete {
         console.log(filteredSuggestions);
         // if (filteredSuggestions.length > 0) {
         //     filteredSuggestions.forEach(item => {
-        //         const suggestionItem = document.createElement('div');
-        //         suggestionItem.className = 'autocomplete-suggestion';
-        //         suggestionItem.textContent = item;
-        //         suggestionItem.addEventListener('click', () => {
+        //         const suggestionItem20 = document.createElement('div');
+        //         suggestionItem20.className = 'autocomplete-suggestion';
+        //         suggestionItem20.textContent = item;
+        //         suggestionItem20.addEventListener('click', () => {
         //             this.input.value = item; // Set input value to the selected suggestion
         //             this.suggestionsDiv.innerHTML = ''; // Hide suggestions
         //         });
-        //         this.suggestionsDiv.appendChild(suggestionItem);
+        //         this.suggestionsDiv.appendChild(suggestionItem20);
         //     });
         // }
     }

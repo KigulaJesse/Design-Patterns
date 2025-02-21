@@ -1,14 +1,14 @@
-// interface ResUser1 {
+// interface ResUser20201 {
 // 	name: string;
 // 	login: string;
 // }
 
-// type ResUser2 = {
+// type ResUser20202 = {
 // 	name: string;
 // 	login: string;
 // }
 
-// // interface Employee extends ResUser1 {
+// // interface Employee extends ResUser20201 {
 // // 	pin: number;
 // // }
 
@@ -24,12 +24,12 @@
 
 // //Interfaces can be used as data types
 
-// interface User {
+// interface User2020 {
 // 	name: string;
 // 	id: number;
 // }
 
-// class UserAccount {
+// class User2020Account {
 // 	name: string;
 // 	id: number
 
@@ -39,7 +39,7 @@
 // 	}
 // }
 
-// const user: User = new UserAccount("Murphy", 1);
+// const User2020: User2020 = new User2020Account("Murphy", 1);
 
 
 // //Types vs Interface
